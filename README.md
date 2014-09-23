@@ -1,7 +1,7 @@
 
 # co-fs-extra
 
-  'fs-extra' and 'fs' wrapped functions that return thunks fo [co](https://github.com/visionmedia/co).
+  'fs-extra' and 'fs' wrapped functions that return thunks for [co](https://github.com/visionmedia/co).
 
 ## Installation
 
