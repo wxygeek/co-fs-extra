@@ -2,17 +2,17 @@
 
 # co-fs-extra
 
-  'fs-extra' and 'fs' wrapped functions that return thunks for [co](https://github.com/visionmedia/co).
+  'fs-extra' wrapped functions that return thunks for [co](https://github.com/visionmedia/co).
 
 ## Installation
 
 ```
-$ npm install co-fs-extra
+$ npm install co-fs-extra --save
 ```
 
 ## API
 
-see more -> [fs-extra](https://www.npmjs.org/package/fs-extra) and [co-fs](https://www.npmjs.org/package/co-fs)
+see more -> [fs-extra](https://www.npmjs.org/package/fs-extra)
 
 ## Example
 
