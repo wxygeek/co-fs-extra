@@ -8,12 +8,14 @@ var stream = require('co-from-stream');
 var methods = require('./methods');
 var fs = require('fs-extra');
 
-thunkify(fs, methods);
-module.exports = fs;
+
+for (var key in fs) {
+  exports[key] = fs[key];
+}
 
 // .exists is still messed
 
-fs.exists = function (path) {
+exports.exists = function (path) {
   return function (done) {
     fs.stat(path, function(err, res){
       done(null, !err);
@@ -23,6 +25,8 @@ fs.exists = function (path) {
 
 // .createReadStream
 
-fs.createReadStream = function () {
+exports.createReadStream = function () {
   return stream(fs.createReadStream.apply(null, arguments));
 };
+
+thunkify(module.exports, methods);
