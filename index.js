@@ -3,67 +3,26 @@
  * Module dependencies.
  */
 
-var thunk = require('thunkify');
-var fse = require('fs-extra');
-var cofs = require('co-fs');
+var thunkify = require('thunkify-wrap');
+var stream = require('co-from-stream');
+var methods = require('./methods');
+var fs = require('fs-extra');
 
-/**
- * co-fs methods to exports.
- */
-var cofsMethods = [
-  'rename',
-  'ftruncate',
-  'chown',
-  'fchown',
-  'lchown',
-  'chmod',
-  'fchmod',
-  'stat',
-  'lstat',
-  'fstat',
-  'link',
-  'symlink',
-  'readlink',
-  'realpath',
-  'unlink',
-  'rmdir',
-  'mkdir',
-  'readdir',
-  'close',
-  'open',
-  'utimes',
-  'futimes',
-  'fsync',
-  'write',
-  'read',
-  'readFile',
-  'writeFile',
-  'appendFile',
-  'exists',
-  'createReadStream'
-];
+thunkify(fs, methods);
+module.exports = fs;
 
-cofsMethods.forEach(function (name) {
-  exports[name] = cofs[name] || null;
-});
+// .exists is still messed
 
-/**
- * fs-extra methods to wrap.
- */
-var fseMethods = [
-  'copy',
-  'ensureFile',
-  'ensureDir',
-  'mkdirs',
-  'move',
-  'outputFile',
-  'outputJson',
-  'readJson',
-  'remove',
-  'writeJson'
-];
+fs.exists = function (path) {
+  return function (done) {
+    fs.stat(path, function(err, res){
+      done(null, !err);
+    });
+  };
+};
 
-fseMethods.forEach(function (name) {
-  if (!fse[name]) return;
-  exports[name] = thunk(fse[name]);
-});
+// .createReadStream
+
+fs.createReadStream = function () {
+  return stream(fs.createReadStream.apply(null, arguments));
+};
