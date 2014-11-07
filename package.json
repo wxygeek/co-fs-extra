@@ -1,6 +1,6 @@
 {
   "name": "co-fs-extra",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "fs-extra for 'co'",
   "author": {
     "name": "GKuChan",
@@ -25,6 +25,6 @@
   "dependencies": {
     "co-from-stream": "~0.0.0",
     "fs-extra": "~0.12.0",
-    "thunkify-wrap": "~1.0.2"
+    "thunkify-wrap": "~1.0.4"
   }
 }

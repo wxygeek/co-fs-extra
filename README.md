@@ -20,7 +20,7 @@ see more -> [fs-extra](https://www.npmjs.org/package/fs-extra)
 
 ```js
 var json = yield fs.readFile('package.json', 'utf8')
-var file = yield fs.ensureFile('htllo.txt')
+var file = yield fs.ensureFile('hello.txt')
 ```
 
 ## License
