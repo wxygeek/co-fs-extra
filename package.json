@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "co-from-stream": "~0.0.0",
-    "fs-extra": "~0.12.0",
+    "fs-extra": "~0.22.1",
     "thunkify-wrap": "~1.0.4"
   }
 }
